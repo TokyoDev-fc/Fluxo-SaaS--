@@ -3,66 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fluxo SaaS | Soluções Digitais</title>
+  <meta name="description" content="Fluxo SaaS — Sites profissionais, sistemas e dashboards inteligentes para pequenas empresas que querem crescer de verdade." />
+  <title>Fluxo SaaS | Soluções Digitais para Empresas</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
   <style>
-    /* TUDO EM UM - FLUXO SAAS */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #ffffff; line-height: 1.6; overflow-x: hidden; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-    .header { height: 80px; display: flex; align-items: center; border-bottom: 1px solid #222; background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 100; }
-    .header__inner { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-    .logo { font-size: 1.5rem; font-weight: 800; text-decoration: none; color: white; }
-    .logo span { color: #FF6B00; }
-    .hero { padding: 80px 0; min-height: 85vh; display: flex; align-items: center; }
-    .hero__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .hero__title { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 900; }
-    .hero__title span { color: #FF6B00; }
-    .hero__subtitle { color: #a0a0a0; font-size: 1.2rem; margin-bottom: 2.5rem; max-width: 500px; }
-    .btn { background: #FF6B00; color: white; padding: 1.1rem 2.2rem; border-radius: 10px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
-    .btn:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(255,107,0,0.4); }
-    .mockup { background: #141414; border: 1px solid #2a2a2a; border-radius: 16px; padding: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-    .mockup-header { display: flex; gap: 8px; margin-bottom: 25px; }
-    .dot { width: 11px; height: 11px; border-radius: 50%; background: #333; }
-    .mockup-content { display: flex; align-items: flex-end; gap: 12px; height: 180px; }
-    .bar { flex: 1; background: #222; border-radius: 4px; height: 50%; }
-    .bar.active { background: #FF6B00; }
-    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 62px; height: 62px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.4); z-index: 1000; transition: 0.3s; }
-    @media (max-width: 850px) { .hero__inner { grid-template-columns: 1fr; text-align: center; } .hero__subtitle { margin-inline: auto; } .hero__visual { display: none; } }
+    /* =============================================
+       FLUXO SAAS — STYLESHEET (INLINE) v2.4
+       ============================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #0a0a0a;
+      --color-bg-2: #111111;
+      --color-bg-3: #161616;
+      --color-bg-card: #141414;
+      --color-border: #222222;
+      --color-border-light: #2a2a2a;
+      --color-accent: #FF6B00;
+      --color-accent-hover: #FF8C00;
+      --color-accent-dim: rgba(255, 107, 0, 0.12);
+      --color-accent-glow: rgba(255, 107, 0, 0.25);
+      --color-text: #FFFFFF;
+      --color-text-muted: #A0A0A0;
+      --color-text-subtle: #666666;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background-color: var(--color-bg); color: var(--color-text); line-height: 1.6; overflow-x: hidden; }
+
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid var(--color-border); }
+    .header__inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .logo { font-size: 1.375rem; font-weight: 800; text-decoration: none; color: #fff; }
+    .logo span { color: var(--color-accent); }
+
+    /* Hero & Background */
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding-top: 72px; }
+    #bgCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+
+    .hero__content { max-width: 700px; }
+    .hero__title { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero__title span { color: var(--color-accent); }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; font-weight: 700; border-radius: 12px; transition: 0.3s; text-decoration: none; border: none; cursor: pointer; }
+    .btn--primary { background: var(--color-accent); color: #fff; }
+    .btn--primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px var(--color-accent-glow); }
+
+    /* Estilos do Carrossel que estava no seu ficheiro */
+    .demos { padding: 100px 0; background: var(--color-bg-2); }
+    .demos__slider { position: relative; overflow: hidden; border-radius: 20px; border: 1px solid var(--color-border); }
+    .demos__track { display: flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+    .demos__item { min-width: 100%; background: var(--color-bg-card); padding: 4rem 2rem; text-align: center; }
+
+    .demos__nav { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    .demos__dot { width: 12px; height: 12px; border-radius: 50%; background: #333; cursor: pointer; transition: 0.3s; }
+    .demos__dot.active { background: var(--color-accent); transform: scale(1.2); }
+
+    /* WhatsApp Button Fixo */
+    .whatsapp-btn { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px rgba(0,0,0,0.4); text-decoration: none; transition: 0.3s; }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) { .hero__title { font-size: 2.5rem; } }
   </style>
 </head>
 <body>
+
+  <canvas id="bgCanvas"></canvas>
+
   <header class="header">
     <div class="container header__inner">
       <a href="#" class="logo">Fluxo<span>SaaS</span></a>
-      <a href="https://wa.me/5511993634841" class="btn" style="padding: 0.6rem 1.2rem; font-size: 0.85rem;">Falar Conosco</a>
+      <a href="https://wa.me/5511993634841" class="btn btn--primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Orçamento</a>
     </div>
   </header>
-  <main>
-    <section class="hero">
-      <div class="container hero__inner">
-        <div class="hero__text">
-          <h1 class="hero__title">Sua presença <span>digital</span> em outro nível.</h1>
-          <p class="hero__subtitle">Criamos Landing Pages de alta conversão e dashboards inteligentes para o seu negócio.</p>
-          <a href="https://wa.me/5511993634841" class="btn">Solicitar Orçamento</a>
-        </div>
-        <div class="hero__visual">
-          <div class="mockup">
-            <div class="mockup-header">
-              <span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
-            </div>
-            <div class="mockup-content">
-              <div class="bar" style="height: 40%"></div><div class="bar active" style="height: 80%"></div><div class="bar" style="height: 55%"></div><div class="bar active" style="height: 95%"></div><div class="bar" style="height: 45%"></div>
-            </div>
-          </div>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__content">
+        <h1 class="hero__title">Sua presença <span>digital</span> inteligente.</h1>
+        <p style="font-size: 1.25rem; color: var(--color-text-muted); margin-bottom: 2.5rem; max-width: 600px;">
+          Desenvolvemos sites profissionais, sistemas e dashboards personalizados para alavancar o seu negócio.
+        </p>
+        <a href="https://wa.me/5511993634841" class="btn btn--primary">Falar com Especialista</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="demos">
+    <div class="container">
+      <div class="demos__slider">
+        <div class="demos__track" id="demosTrack">
+          <div class="demos__item"><h2>Landing Pages</h2><p>Focadas em conversão máxima.</p></div>
+          <div class="demos__item"><h2>Sistemas SaaS</h2><p>Soluções escaláveis para o seu negócio.</p></div>
+          <div class="demos__item"><h2>Dashboards</h2><p>Dados inteligentes em tempo real.</p></div>
+          <div class="demos__item"><h2>Suporte Técnico</h2><p>Acompanhamento total do seu projeto.</p></div>
         </div>
       </div>
-    </section>
-  </main>
-  <a href="https://wa.me/5511993634841" class="whatsapp-float" target="_blank">
+      <div class="demos__nav" id="demosDots">
+        <div class="demos__dot active"></div>
+        <div class="demos__dot"></div>
+        <div class="demos__dot"></div>
+        <div class="demos__dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/5511993634841" class="whatsapp-btn" target="_blank">
     <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.503-2.961-2.617-.087-.114-.708-.941-.708-1.792s.448-1.273.607-1.446c.159-.173.346-.217.462-.217s.231.001.332.005c.109.004.258-.041.404.311.145.352.492 1.203.535 1.289.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.303c-.087.101-.177.211-.077.382.1.173.443.731.95 1.181.652.58 1.203.76 1.376.846.173.086.274.072.376-.043.101-.116.434-.506.549-.68s.231-.144.39-.087c.158.058 1.011.477 1.184.564s.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
   </a>
+
+  <script>
+    // SCRIPT ORIGINAL DE PARTÍCULAS
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+
+    function init() {
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W; canvas.height = H;
+      particles = Array.from({length: 40}, () => ({
+        x: Math.random() * W, y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 1
+      }));
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > W) p.vx *= -1;
+        if(p.y < 0 || p.y > H) p.vy *= -1;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 107, 0, 0.2)';
+        ctx.fill();
+      });
+      requestAnimationFrame(draw);
+    }
+    init(); draw(); window.onresize = init;
+
+    // SCRIPT ORIGINAL DO CARROSSEL
+    const track = document.getElementById('demosTrack');
+    const dots = document.querySelectorAll('.demos__dot');
+    let current = 0;
+
+    function update(index) {
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      current = index;
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => update(i)));
+    setInterval(() => update((current + 1) % 4), 5000);
+  </script>
 </body>
 </html>
